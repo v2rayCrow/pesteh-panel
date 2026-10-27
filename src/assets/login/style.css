@@ -1,0 +1,271 @@
+:root {
+    color-scheme: dark;
+    --color-bg-main: radial-gradient(ellipse at top left, #294b35 0%, #1b211a 48%, #17120f 100%);
+    --color-bg-card: rgba(48, 39, 29, 0.82);
+    --color-bg-input: rgba(18, 23, 18, 0.78);
+    --color-bg-btn: rgba(130, 166, 78, 0.16);
+
+    --color-text-primary: #f7f1e5;
+    --color-text-secondary: #d6d0bd;
+    --color-text-btn: #d8e9b7;
+
+    --color-brand-primary: #8eaf55;
+    --color-brand-hover: #b4d477;
+    --color-border-accent: color-mix(in srgb, var(--color-brand-hover), transparent 72%);
+
+    --radius-card: 1.5rem;
+    --radius-ui: 0.75rem;
+    --radius-btn: 1rem;
+
+    --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.16), 0 24px 55px rgba(0, 0, 0, 0.24);
+    --shadow-input: inset 0 2px 4px rgba(0, 0, 0, 0.22), 0 1px 2px rgba(255, 255, 255, 0.035);
+    --shadow-input-focus: 0 0 0 3px rgba(180, 212, 119, 0.24), 0 8px 20px -4px rgba(110, 143, 58, 0.22);
+    --shadow-header: 0 2px 10px rgba(0, 0, 0, 0.28);
+    --shadow-icon: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    --space-xl: 1.5rem;
+    --space-sm: 0.5rem;
+    --space-md: 0.85rem;
+
+    --font-size-base: 1rem;
+    --transition-standard: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --element-border-radius: 10px;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --color-bg-main: radial-gradient(ellipse at top left, #e8efd9 0%, #f7f1e5 54%, #eee1cf 100%);
+    --color-bg-card: rgba(255, 252, 244, 0.92);
+    --color-bg-input: #fffdf7;
+    --color-bg-btn: rgba(94, 125, 48, 0.11);
+    --color-text-primary: #30291f;
+    --color-text-secondary: #5b5141;
+    --color-text-btn: #385523;
+    --color-brand-primary: #63853b;
+    --color-brand-hover: #789b4b;
+    --color-border-accent: color-mix(in srgb, var(--color-brand-hover), transparent 48%);
+    --shadow-card: 0 8px 24px rgba(73, 57, 34, 0.08), 0 2px 8px rgba(73, 57, 34, 0.04);
+    --shadow-input: inset 0 1px 2px rgba(72, 58, 35, 0.05);
+    --shadow-input-focus: 0 0 0 3px rgba(99, 133, 59, 0.18), 0 8px 20px -4px rgba(99, 133, 59, 0.12);
+    --shadow-header: 0 1px 2px rgba(56, 44, 28, 0.08);
+    --shadow-icon: 0 2px 5px rgba(56, 44, 28, 0.12);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "Ubuntu", system-ui;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg-main);
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+}
+
+h1 {
+    color: var(--color-text-primary);
+    text-shadow: var(--shadow-header);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-sm);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    height: 2.5rem;
+}
+
+.panel-version {
+    align-self: flex-start;
+    font-size: large;
+}
+
+h2 {
+    color: var(--color-text-secondary);
+    margin-top: 0;
+}
+
+.form-container {
+    max-width: 95%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-accent);
+    border-radius: var(--radius-card);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-card);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+}
+
+.form-control {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+label {
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.input-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    /* eslint-disable-next-line css/use-baseline */
+    user-select: none;
+    color: darkgray;
+}
+
+input[type="text"],
+input[type="password"] {
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    border: none;
+    border-radius: var(--radius-ui);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-input);
+    line-height: 1.5;
+    outline: none;
+    font-size: var(--font-size-base);
+    font-family: inherit;
+    box-shadow: var(--shadow-input);
+    transition: var(--transition-standard);
+}
+
+input[type="password"]:focus,
+input[type="text"]:focus {
+    border-color: var(--color-brand-primary);
+    box-shadow: var(--shadow-input-focus);
+    outline: none;
+}
+
+.hint {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    gap: 4px;
+    width: max-content;
+    white-space: nowrap;
+    padding: var(--space-md);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    border: 1px solid var(--color-border-accent);
+    border-radius: var(--radius-btn);
+    color: var(--color-text-btn);
+    background: var(--color-bg-btn);
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--color-brand-primary);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    color: var(--color-text-primary);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+@media only screen and (min-width: 576px) {
+    .container {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .container {
+        width: 30%;
+    }
+}
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--color-border-accent);
+    border-radius: 50%;
+    background: var(--color-bg-card);
+    color: var(--color-brand-hover);
+    cursor: pointer;
+    transition: var(--transition-standard);
+}
+
+.theme-toggle:hover {
+    background: var(--color-bg-btn);
+    transform: translateY(-1px);
+}
+
+:root[data-theme="light"] body {
+    color: var(--color-text-primary);
+}
