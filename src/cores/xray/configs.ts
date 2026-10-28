@@ -151,7 +151,7 @@ async function addBestPingConfigs(
     const customDomainSign = isCustomDomain ? 'D ' : '';
     const configType = `${fragmentSign}${customDomainSign}`;
 
-    const remark = `💦 ${chainSign}Best Ping ${configType}🚀`;
+    const remark = `🥜 Pesteh ${configType}`;
     const outbounds = [
         ...chainOutbounds,
         ...proxyOutbounds
@@ -302,12 +302,12 @@ export async function getXrCustomConfigs(isFragment: boolean): Promise<Response>
                     const proxy = modifyOutbound(outbound, `proxy-${index}`);
                     proxies.push(proxy);
 
-                    const remark = generateRemark(protocolIndex, port, host, protocol, domain, isFragment, false);
+                    const remark = `🌱 Pesteh ${String(index).padStart(2, '0')}`;
                     const config = await buildConfig(remark, [outbound], false, false, false, false, false, [host]);
                     configs.push(config);
 
                     if (chainOutbound) {
-                        const remark = generateRemark(protocolIndex, port, host, protocol, domain, isFragment, true);
+                        const remark = `🥜 Pesteh ${String(index).padStart(2, '0')}`;
                         const chainConfig = await buildConfig(remark, [chainOutbound, outbound], false, true, false, false, false, [host]);
                         configs.push(chainConfig);
 
@@ -329,6 +329,29 @@ export async function getXrCustomConfigs(isFragment: boolean): Promise<Response>
         await addBestFragmentConfigs(configs, chainOutbound);
         await addWorkerlessConfigs(configs);
     }
+
+    configs.push(
+        await buildConfig(
+            '⚠️ کانفیگ‌های این پنل غیرقابل فروش هستند.',
+            [],
+            false,
+            false,
+            false,
+            false,
+            false,
+            []
+        ),
+        await buildConfig(
+            '📢 کانال تلگرام: @v2source',
+            [],
+            false,
+            false,
+            false,
+            false,
+            false,
+            []
+        )
+    );
 
     const fileName = isFragment ? 'fragment' : 'normal';
     return new Response(JSON.stringify(configs, null, 4), {
