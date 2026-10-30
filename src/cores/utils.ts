@@ -77,24 +77,10 @@ export function generateRemark(
     isFragment: boolean,
     isChain: boolean
 ): string {
-    const { cleanIPs, customCdnAddrs, customDomain, upstreamParams: { upstreamServer } } = getSettings();
-
+    const emoji = index % 2 === 1 ? '🌱' : '🥜';
+    const num = String(index).padStart(2, '0');
     const chainSign = isChain ? '🔗 ' : '';
-    const protoSign = protocol === _VL_ ? _VL_CAP_ : _TR_CAP_;
-
-    const fragmentSign = isFragment ? 'F ' : '';
-    const customDomainSign = domain === customDomain ? 'D ' : '';
-    const customCdnSign = customCdnAddrs.includes(address) ? 'C ' : '';
-    const configType = `${fragmentSign}${customDomainSign}${customCdnSign}`;
-
-    let addressType;
-    cleanIPs.includes(address)
-        ? addressType = 'Clean IP'
-        : addressType = isDomain(address) ? 'Domain' : isIPv4(address) ? 'IPv4' : isIPv6(address) ? 'IPv6' : '';
-
-    return address === upstreamServer
-        ? `💦 ${index}. ${chainSign}${protoSign} ${configType}- Upstream Proxy`
-        : `💦 ${index}. ${chainSign}${protoSign} ${configType}- ${addressType} : ${port}`;
+    return `${emoji} ${chainSign}Pesteh ${num}`;
 }
 
 export function randomUpperCase(str: string): string {
